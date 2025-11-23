@@ -1,0 +1,22 @@
+cmake_minimum_required(VERSION 3.20)
+project(CLIApiClient)
+
+set(CMAKE_C_STANDARD 99)
+set(PROJECT_DIR ${CMAKE_CURRENT_SOURCE_DIR}/src)
+
+file(GLOB_RECURSE PROJECT_SOURCES
+	CONFIGURE_DEPENDS
+	"${PROJECT_DIR}/*.c"
+	"${PROJECT_DIR}/*.h"
+)
+
+find_package(PkgConfig REQUIRED)
+pkg_check_modules(CURL REQUIRED libcurl)
+pkg_check_modules(CJSON REQUIRED libcjson)
+
+set(INCLUDE_DIRS ${CURL_INCLUDE_DIRS} ${CJSON_INCLUDE_DIRS})
+set(INCLUDE_LIBRARIES ${CURL_LIBRARIES} ${CJSON_LIBRARIES})
+
+include_directories(${INCLUDE_DIRS})
+add_executable(${PROJECT_NAME} ${PROJECT_SOURCES})
+target_link_libraries(${PROJECT_NAME} ${INCLUDE_LIBRARIES})
