@@ -4,6 +4,11 @@
 
 bool isRunning;
 
+void clear_input_buffer() {
+    int c;
+    while ((c = getchar()) != '\n' && c != EOF);
+}
+
 void clear_screen() {
     printf("\033[2J\033[H");
 }
@@ -19,6 +24,13 @@ int main() {
 		printf("Выберите действие\n1. GET запрос\n2. POST запрос\n3. Выйти\n");
         
         int action;
+        if (scanf("%d", &action) != 1) {
+            clear_input_buffer();
+            printf("Ошибка ввода! Нажмите Enter для продолжения...");
+            getchar();
+            continue;
+        }
+        clear_input_buffer();
         
         Memory response;
         switch (action) {

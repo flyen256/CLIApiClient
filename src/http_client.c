@@ -56,6 +56,7 @@ Memory http_get(const char *url) {
 			fprintf(stderr, "curl_easy_perform() failed: %s\n", curl_easy_strerror(resCode));
 		}
 	}
+	http_client_cleanup(curl);
 	return mem;
 }
 
@@ -81,5 +82,6 @@ Memory http_post_json(const char *url, const char *json) {
 			fprintf(stderr, "curl_easy_perform() failed: %s\n", curl_easy_strerror(resCode));
 		}
 	}
+	http_client_cleanup(curl);
 	return mem;
 }
