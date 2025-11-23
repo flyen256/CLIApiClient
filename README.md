@@ -1,1 +1,1 @@
-# My first C project
+# My first C very small project (just for learn libcurl and some work with memory)
