@@ -4,5 +4,5 @@
 
 #### Linux
 ```bash
-curl -sL https://github.com/flyen256/CLIApiClient/blob/main/install.sh | bash
+curl -sL https://raw.githubusercontent.com/flyen256/CLIApiClient/main/install.sh | bash
 ```
